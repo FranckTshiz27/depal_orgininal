@@ -1,0 +1,1969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fullDepalReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ef6f21c-2dea-4277-9318-8b58d9ee1c10">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.report.description" value=""/>
+	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="FULLDEPALDS" uuid="d5c51a85-28f4-4a4c-9002-eb60b4d96794">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="product.abbreviation" class="java.lang.String"/>
+		<field name="product.game.name" class="java.lang.String"/>
+		<field name="product.formatProduct.denomination" class="java.lang.String"/>
+		<field name="numberOfLockers" class="java.lang.Integer"/>
+		<field name="numberOfBottles" class="java.lang.Integer"/>
+		<field name="numberOfBrokenBottles" class="java.lang.Integer"/>
+		<field name="numberOfBaddCappedBottles" class="java.lang.Integer"/>
+		<field name="product.formatProduct.numberOfBottle" class="java.lang.Integer"/>
+		<field name="product.game.category" class="java.lang.Object"/>
+		<variable name="missing" class="java.lang.Integer">
+			<variableExpression><![CDATA[$F{numberOfBottles} !=0?$F{product.formatProduct.numberOfBottle} -$F{numberOfBottles} : 0]]></variableExpression>
+		</variable>
+		<variable name="total_bottles" class="java.lang.Integer">
+			<variableExpression><![CDATA[$F{product.formatProduct.numberOfBottle}*$F{numberOfLockers}+$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="totalLockersByCategory" class="java.lang.Integer" resetType="Group" resetGroup="gameCategory" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+		</variable>
+		<variable name="totalBottlesByCategory" class="java.lang.Integer" resetType="Group" resetGroup="gameCategory" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="totalBrokenBottlesByCategory" class="java.lang.Integer" resetType="Group" resetGroup="gameCategory" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+		</variable>
+		<variable name="totalBaddCappedByCategory" class="java.lang.Integer" resetType="Group" resetGroup="gameCategory" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBaddCappedBottles}]]></variableExpression>
+		</variable>
+		<variable name="totalOfTotalBottlesByCategory" class="java.lang.Integer" resetType="Group" resetGroup="gameCategory" calculation="Sum">
+			<variableExpression><![CDATA[$V{total_bottles}]]></variableExpression>
+		</variable>
+		<variable name="totalMissingBottlesByCategory" class="java.lang.Integer" resetType="Group" resetGroup="gameCategory" calculation="Sum">
+			<variableExpression><![CDATA[$V{missing}]]></variableExpression>
+		</variable>
+		<variable name="totalLockers" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+		</variable>
+		<variable name="totalBottles" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="totalBrokenBottles" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+		</variable>
+		<variable name="totalBaddCapedBottles" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBaddCappedBottles}]]></variableExpression>
+		</variable>
+		<variable name="sum_total_bottles" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$V{total_bottles}]]></variableExpression>
+		</variable>
+		<variable name="totalMissingBottles" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$V{missing}]]></variableExpression>
+		</variable>
+		<group name="gameCategory" isReprintHeaderOnEachPage="true">
+			<groupExpression><![CDATA[$F{product.game.category}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="EMPOBSDS" uuid="4c35d5ff-e075-48d2-b4be-7ad796d6efb1">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="packaging.code" class="java.lang.String"/>
+		<field name="packaging.container.name" class="java.lang.String"/>
+		<field name="packaging.container.category" class="java.lang.Object"/>
+		<field name="packaging.format.numberOfBottle" class="java.lang.Integer"/>
+		<field name="packaging.format.denomination" class="java.lang.String"/>
+		<field name="numberOfBottles" class="java.lang.Integer"/>
+		<field name="numberOfLockers" class="java.lang.Integer"/>
+		<field name="numberOfBrokenBottles" class="java.lang.Integer"/>
+		<variable name="total_bottles" class="java.lang.Integer">
+			<variableExpression><![CDATA[$F{packaging.format.numberOfBottle}*$F{numberOfLockers}+$F{numberOfBottles}]]></variableExpression>
+			<initialValueExpression><![CDATA[$F{packaging.format.numberOfBottle}*$F{numberOfLockers}+$F{numberOfBottles}]]></initialValueExpression>
+		</variable>
+		<variable name="missing" class="java.lang.Integer">
+			<variableExpression><![CDATA[$F{numberOfBottles} !=0?$F{packaging.format.numberOfBottle} -$F{numberOfBottles} : 0]]></variableExpression>
+		</variable>
+		<variable name="my_totalLockersObservation" class="java.lang.Integer" resetType="Group" resetGroup="containerObservationGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+		</variable>
+		<variable name="my_totalBottlesObservation" class="java.lang.Integer" resetType="Group" resetGroup="containerObservationGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="my_totalBrokenBottlesObservation" class="java.lang.Integer" resetType="Group" resetGroup="containerObservationGroup" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+		</variable>
+		<variable name="my_sum_total_Observation" class="java.lang.Integer" resetType="Group" resetGroup="containerObservationGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{total_bottles}]]></variableExpression>
+		</variable>
+		<variable name="my_total_missing_Observation" class="java.lang.Integer" resetType="Group" resetGroup="containerObservationGroup" calculation="Sum">
+			<variableExpression><![CDATA[$V{missing}]]></variableExpression>
+		</variable>
+		<variable name="total_bottles_observation" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="total_lockers_observation" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+		</variable>
+		<variable name="total_broken_bottles_observation" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+		</variable>
+		<variable name="total_sum_bottles_observation" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$V{total_bottles}]]></variableExpression>
+		</variable>
+		<variable name="total_sum_missings" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$V{missing}]]></variableExpression>
+		</variable>
+		<group name="containerObservationGroup" isReprintHeaderOnEachPage="true">
+			<groupExpression><![CDATA[$F{packaging.container.category}]]></groupExpression>
+		</group>
+	</subDataset>
+	<subDataset name="EMPTYDS" uuid="ddb69bc4-fc73-461a-a732-637a1badc31d">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="packaging.container.category" class="java.lang.Object"/>
+		<field name="packaging.container.name" class="java.lang.String"/>
+		<field name="packaging.format.denomination" class="java.lang.String"/>
+		<field name="packaging.code" class="java.lang.String"/>
+		<field name="numberOfLockers" class="java.lang.Integer"/>
+		<field name="numberOfBottles" class="java.lang.Integer"/>
+		<field name="numberOfBrokenBottles" class="java.lang.Integer"/>
+		<field name="packaging.format.numberOfBottle" class="java.lang.Integer"/>
+		<variable name="total_bottles" class="java.lang.Integer">
+			<variableExpression><![CDATA[$F{packaging.format.numberOfBottle}*$F{numberOfLockers}+$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="missing" class="java.lang.Integer">
+			<variableExpression><![CDATA[$F{numberOfBottles} !=0?$F{packaging.format.numberOfBottle} -$F{numberOfBottles} : 0]]></variableExpression>
+		</variable>
+		<variable name="empty_lockersNumber_by_category" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+		</variable>
+		<variable name="empty_bottlesNumber_by_category" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="empty_brokenbottlesNumber_by_category" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+		</variable>
+		<variable name="empty_sum_totalBottles_by_category" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+			<variableExpression><![CDATA[$V{total_bottles}]]></variableExpression>
+		</variable>
+		<variable name="empty_sum_totalMissing_by_category" class="java.lang.Integer" resetType="Group" resetGroup="Group1" calculation="Sum">
+			<variableExpression><![CDATA[$V{missing}]]></variableExpression>
+		</variable>
+		<variable name="total_empty_lockersNumber" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+		</variable>
+		<variable name="total_empty_bottlesNumber" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+		</variable>
+		<variable name="total_empty_brokenbottlesNumber" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+		</variable>
+		<variable name="total_empty_total_bottles" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$V{total_bottles}]]></variableExpression>
+		</variable>
+		<variable name="total_empty_missings" class="java.lang.Integer" calculation="Sum">
+			<variableExpression><![CDATA[$V{missing}]]></variableExpression>
+		</variable>
+		<group name="Group1">
+			<groupExpression><![CDATA[$F{packaging.container.category}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="reportNumber" class="java.lang.Long"/>
+	<parameter name="depalettizationDate" class="java.lang.String"/>
+	<parameter name="centerName" class="java.lang.String"/>
+	<parameter name="driverName" class="java.lang.String"/>
+	<parameter name="driverCode" class="java.lang.String"/>
+	<parameter name="ub" class="java.lang.String"/>
+	<parameter name="circuit" class="java.lang.String"/>
+	<parameter name="trip" class="java.lang.String"/>
+	<parameter name="shift_full" class="java.lang.String"/>
+	<parameter name="agentName_full" class="java.lang.String"/>
+	<parameter name="emptyDepalettizations" class="java.util.Collection"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String"/>
+	<parameter name="observation" class="net.sf.jasperreports.engine.JasperReport"/>
+	<parameter name="DATASOURCE1" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="DATASOURCE2" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="DATASOURCE3" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="isObservation" class="java.lang.Boolean"/>
+	<parameter name="isEmpty" class="java.lang.Boolean"/>
+	<parameter name="isFull" class="java.lang.Boolean"/>
+	<parameter name="agentName_empty" class="java.lang.String"/>
+	<parameter name="shift_empty" class="java.lang.String"/>
+	<parameter name="logo" class="Object" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="product.formatProduct.denomination" class="java.lang.String"/>
+	<field name="product.game.name" class="java.lang.String"/>
+	<field name="DATASOURCE1.product.code" class="java.lang.String"/>
+	<field name="numberOfLockers" class="java.lang.Integer"/>
+	<field name="numberOfBottles" class="java.lang.Integer"/>
+	<field name="numberOfBrokenBottles" class="java.lang.Integer"/>
+	<field name="numberOfBaddCappedBottles" class="java.lang.Integer"/>
+	<field name="product.formatProduct.numberOfBottle" class="java.lang.Integer"/>
+	<field name="product.game.category" class="java.lang.Object"/>
+	<variable name="tot_bouteilles" class="java.lang.Long" resetType="Group" resetGroup="Groupe1" incrementType="Column" calculation="Sum">
+		<variableExpression><![CDATA[($F{product.formatProduct.numberOfBottle}*$F{numberOfLockers})+$F{numberOfBottles}]]></variableExpression>
+	</variable>
+	<variable name="totalLockerdByCategory" class="java.lang.Integer" resetType="Group" resetGroup="Groupe1" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+	</variable>
+	<variable name="totalBottlesdByCategory" class="java.lang.Integer" resetType="Group" resetGroup="Groupe1" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+	</variable>
+	<variable name="totalBrokenBottlesdByCategory" class="java.lang.Integer" resetType="Group" resetGroup="Groupe1" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+	</variable>
+	<variable name="totalBadCappedBottlesdByCategory" class="java.lang.Integer" resetType="Group" resetGroup="Groupe1" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfBaddCappedBottles}]]></variableExpression>
+	</variable>
+	<variable name="tot_bottles_by_category" class="java.lang.Long" resetType="Group" resetGroup="Groupe1" calculation="Sum">
+		<variableExpression><![CDATA[$V{tot_bouteilles}]]></variableExpression>
+	</variable>
+	<variable name="totalLockerS" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfLockers}]]></variableExpression>
+	</variable>
+	<variable name="totalBottles" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfBottles}]]></variableExpression>
+	</variable>
+	<variable name="totalBrokenBottles" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfBrokenBottles}]]></variableExpression>
+	</variable>
+	<variable name="totalBaddCappedBottles" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{numberOfBaddCappedBottles}]]></variableExpression>
+	</variable>
+	<variable name="total_totalBouteilles" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{tot_bouteilles}]]></variableExpression>
+	</variable>
+	<group name="Groupe1">
+		<groupExpression><![CDATA[$F{product.game.category}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="109" splitType="Stretch">
+			<image>
+				<reportElement x="-10" y="-20" width="130" height="85" uuid="700975a0-f500-4740-a0a4-00e4b9576d14"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement mode="Opaque" x="100" y="53" width="366" height="17" backcolor="#F5F5F5" uuid="48092725-7899-4c30-a096-8b7b72f3b823"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["FICHE DE DEPALETTISATION  N° "+$P{reportNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="82" y="-1" width="107" height="16" uuid="563f15b5-45d3-4dff-b822-97a141405314"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Candara" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BRAC-DD-DOC-033@V00]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="13" width="108" height="18" uuid="b89a3c49-da19-4a41-9394-fa7d9bdcf6bf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Candara" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIVISION DISTRIBUTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="82" y="28" width="108" height="18" uuid="66aba955-6e53-4e16-ac5e-914f17250c91"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Candara" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BRAC-CC-DOC-003@V00]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="408" y="0" width="145" height="18" uuid="2651d228-d492-4213-b44c-2aeba6e08eb5"/>
+				<textElement>
+					<font fontName="Candara" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DATE : "+$P{depalettizationDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="408" y="17" width="145" height="18" uuid="c599de94-e9bb-4d9e-9649-de495dc4cb61"/>
+				<textElement>
+					<font fontName="Candara" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["C.D : "+$P{centerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="248" y="3" width="142" height="13" uuid="5a2d19d1-2d26-4003-a563-01c447d3d432"/>
+				<textElement markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="249" y="18" width="142" height="13" uuid="13892679-e7d6-4fc1-9d7d-6682b2397488"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[BC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="248" y="30" width="142" height="13" uuid="9beaaa62-866d-4025-bc47-a6d84c0b11a9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[LIVRE A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="75" width="120" height="13" forecolor="#080707" backcolor="#FAFAFA" uuid="784b68ec-f9e0-4568-88cd-43d53a292d53"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CHAUFFEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="75" width="97" height="13" backcolor="#FAFAFA" uuid="3cccea87-b930-4a9f-a065-dc3a9af71706">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[N° COMPTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="89" width="120" height="17" forecolor="#0A0909" backcolor="#D1D1D1" uuid="18d6d014-b106-499c-8636-0b9082284aba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="120" y="89" width="97" height="17" forecolor="#0A0909" backcolor="#D1D1D1" uuid="18753cec-9dfd-4fe8-8812-5371ef1b27df">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="249" y="75" width="107" height="13" backcolor="#FAFAFA" uuid="56f37e09-1d72-4824-b9ab-ebae36bcd3f2">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CIRCUIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="357" y="75" width="89" height="13" backcolor="#FAFAFA" uuid="1ac1b1c1-a309-462d-8278-658cb7dbbd38">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[UB]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="249" y="89" width="108" height="17" backcolor="#D1D1D1" uuid="1ff470da-c4cf-46ed-892f-7cf402fa873e">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{circuit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="357" y="89" width="89" height="17" backcolor="#D1D1D1" uuid="6d69705b-e506-4839-9616-83aef8ed3f2a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ub}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="75" width="60" height="13" backcolor="#FAFAFA" uuid="a3948919-e6cc-4852-8672-59e493f67fc6">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="html">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VOYAGE]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="465" y="89" width="60" height="17" backcolor="#D1D1D1" uuid="305b1328-1b33-4b25-8606-cde8806d0bb8">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{trip}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="91" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{isFull}==true]]></printWhenExpression>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="554" height="12" forecolor="#FCFCFC" backcolor="#505052" uuid="91524d71-c84f-4691-8407-2604ef4d677f">
+					<printWhenExpression><![CDATA[$P{isFull}==true]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="9">
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Candara" size="7"/>
+				</textElement>
+				<text><![CDATA[PLEINS]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement mode="Opaque" x="0" y="12" width="554" height="68" uuid="d7e3cdc2-b983-45ef-998d-2133d5c9be2c">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="FULLDEPALDS" uuid="0cec20ad-51ea-4c11-a64e-151f9941248b">
+						<dataSourceExpression><![CDATA[$P{DATASOURCE1}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="555" uuid="2ca65191-f23c-4fd6-99c2-80db2c9dde76">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [9]"/>
+						<jr:groupHeader groupName="gameCategory">
+							<jr:cell height="11" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textField bookmarkLevel="4">
+									<reportElement mode="Opaque" x="0" y="0" width="555" height="11" isPrintInFirstWholeBand="true" backcolor="#F7F7F7" uuid="171c5c16-47b0-40c6-867f-39623e72d471">
+										<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+									</reportElement>
+									<box leftPadding="9">
+										<topPen lineWidth="0.0" lineStyle="Dotted"/>
+										<leftPen lineWidth="0.0" lineStyle="Dotted"/>
+										<bottomPen lineWidth="0.0" lineStyle="Dotted"/>
+										<rightPen lineWidth="0.0" lineStyle="Dotted"/>
+									</box>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Candara" size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{product.game.category}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:groupFooter groupName="gameCategory">
+							<jr:cell height="2" rowSpan="1"/>
+						</jr:groupFooter>
+						<jr:columnGroup width="220" uuid="3faf81d4-0c22-4ad5-8e6d-6c3e5e78c659">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [3]"/>
+							<jr:tableFooter height="14" rowSpan="1">
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="220" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="e8668bde-06f4-4986-b36d-99fe3412b78a">
+										<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									</reportElement>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7" isBold="true"/>
+									</textElement>
+									<text><![CDATA[TOTAUX]]></text>
+								</staticText>
+							</jr:tableFooter>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="220" height="11" uuid="fb42baa5-d705-4c3d-b244-05b0f1a67c96">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="8" isBold="true"/>
+										</textElement>
+										<text><![CDATA[TOTAL]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:column width="25" uuid="dc7e5878-4740-41b4-84af-c7f87b7e17c5">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
+								<jr:tableFooter height="0" rowSpan="1"/>
+								<jr:groupHeader groupName="gameCategory">
+									<jr:cell height="12" rowSpan="1">
+										<staticText>
+											<reportElement positionType="FixRelativeToBottom" stretchType="ElementGroupHeight" mode="Opaque" x="0" y="0" width="25" height="12" uuid="f9d801b0-7187-4fa3-9f7c-bb7453eb16a2">
+												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+											</reportElement>
+											<box>
+												<topPen lineWidth="0.25"/>
+												<leftPen lineWidth="0.25"/>
+												<bottomPen lineWidth="0.25"/>
+												<rightPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6"/>
+											</textElement>
+											<text><![CDATA[N°]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="gameCategory">
+									<jr:cell height="0" rowSpan="1"/>
+								</jr:groupFooter>
+								<jr:detailCell height="10">
+									<box>
+										<pen lineWidth="0.0"/>
+										<topPen lineWidth="0.2"/>
+										<leftPen lineWidth="0.05"/>
+										<bottomPen lineWidth="0.2"/>
+										<rightPen lineWidth="0.05"/>
+									</box>
+									<textField>
+										<reportElement x="0" y="0" width="25" height="10" uuid="d4f0478b-58c4-46e4-b56a-5b7c80c893b9"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="105" uuid="287837e6-daf4-4e57-aac8-fbd384e9529b">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
+								<jr:tableFooter height="0" rowSpan="1"/>
+								<jr:groupHeader groupName="gameCategory">
+									<jr:cell height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="105" height="12" uuid="e789d208-618f-4069-beaa-498cd2bc847d"/>
+											<box>
+												<topPen lineWidth="0.25"/>
+												<leftPen lineWidth="0.25"/>
+												<bottomPen lineWidth="0.25"/>
+												<rightPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6"/>
+											</textElement>
+											<text><![CDATA[PRODUIT]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="gameCategory">
+									<jr:cell height="0" rowSpan="1"/>
+								</jr:groupFooter>
+								<jr:detailCell height="10">
+									<box>
+										<topPen lineWidth="0.2"/>
+										<leftPen lineWidth="0.2"/>
+										<bottomPen lineWidth="0.2"/>
+										<rightPen lineWidth="0.2"/>
+									</box>
+									<textField>
+										<reportElement x="0" y="0" width="105" height="10" uuid="e5cc2b5c-aee8-4cc8-9b08-b8ac2f60bc49"/>
+										<box leftPadding="5"/>
+										<textElement verticalAlignment="Middle">
+											<font fontName="Candara" size="5" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{product.game.name}+" "+$F{product.formatProduct.denomination}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="90" uuid="b01ce9ed-f498-4029-b7e9-406cc5f664c5">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
+								<jr:tableFooter height="0" rowSpan="1"/>
+								<jr:groupHeader groupName="gameCategory">
+									<jr:cell height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="90" height="12" uuid="68620c8d-5b88-4fb7-980f-54332ea8cbe5"/>
+											<box>
+												<topPen lineWidth="0.25"/>
+												<leftPen lineWidth="0.25"/>
+												<bottomPen lineWidth="0.25"/>
+												<rightPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6"/>
+											</textElement>
+											<text><![CDATA[CODE]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="gameCategory">
+									<jr:cell height="0" rowSpan="1"/>
+								</jr:groupFooter>
+								<jr:detailCell height="10">
+									<property name="com.jaspersoft.studio.unit.width" value="px"/>
+									<box>
+										<topPen lineWidth="0.2"/>
+										<leftPen lineWidth="0.2"/>
+										<bottomPen lineWidth="0.2"/>
+										<rightPen lineWidth="0.2"/>
+									</box>
+									<textField>
+										<reportElement x="0" y="0" width="90" height="10" uuid="ff7b397d-ccc5-43c2-b72e-df375820c089"/>
+										<box leftPadding="2"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{product.abbreviation}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+						<jr:column width="55" uuid="6c594a97-e8fd-48c5-b1f7-4fe6733611ca">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
+							<jr:tableFooter height="14" rowSpan="2">
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="55" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="1e3d0e4f-2ad6-41d5-99f6-3afa0a07a969"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{totalLockers}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="gameCategory">
+								<jr:cell height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="55" height="12" uuid="35eacba9-f156-451d-85b5-45f9c4726ed5"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6"/>
+										</textElement>
+										<text><![CDATA[CASIER(S)]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="55" height="11" uuid="24f81433-48b7-452a-94ce-2d066aa0ec21"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{totalLockersByCategory}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell height="10">
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="55" height="10" uuid="8b3a6d77-14a6-4610-a2fe-11ae9ef36718"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="5" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{numberOfLockers}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="75" uuid="f18a02e7-a11a-456b-b165-df7c6d46b47f">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne5"/>
+							<jr:tableFooter height="14" rowSpan="2">
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="75" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="158da5f9-adab-40ab-aea9-f64ef01ddac1"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{totalBottles}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="gameCategory">
+								<jr:cell height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="75" height="12" uuid="0a2104d2-9096-450c-a435-07fcd3d9ddd8"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6"/>
+										</textElement>
+										<text><![CDATA[BOUTEILLE(S)]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="75" height="11" uuid="9a7f964a-a85e-49a0-80ed-03b107fc76cd"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{totalBottlesByCategory}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell height="10">
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="75" height="10" uuid="712c384a-57e0-4fc7-b0b0-81e192448fd7"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="5" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{numberOfBottles}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="55" uuid="88e1f918-dde5-4b6d-81d4-748270aa7f5f">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne6"/>
+							<jr:tableFooter height="14" rowSpan="2">
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="55" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="c0520cd7-01cf-4891-92ea-eb42b404e785"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{totalBrokenBottles}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="gameCategory">
+								<jr:cell height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="55" height="12" uuid="cb9a6381-b67d-41d5-bc50-b8cb0bcf6208"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6"/>
+										</textElement>
+										<text><![CDATA[B. CAS.]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="55" height="11" uuid="7b2da725-a3a6-4585-beb6-2dc7e30ceefc"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{totalBrokenBottlesByCategory}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell height="10">
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="55" height="10" uuid="0ee5345c-c814-4b1f-8d3b-e6106cb8e094"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="5" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{numberOfBrokenBottles}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="47" uuid="e4899c9a-c2b4-453e-a48e-98dac33415da">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne7"/>
+							<jr:tableFooter height="14" rowSpan="2">
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="47" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="4ebe29a6-a7a7-4de8-806f-39c89995e0e9"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{totalBaddCapedBottles}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="gameCategory">
+								<jr:cell height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="47" height="12" uuid="1c0f1408-d22c-4e5f-baa2-78ea637447b8"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6"/>
+										</textElement>
+										<text><![CDATA[B. M. CAP.]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="47" height="11" uuid="be9cbaff-1c85-49de-b881-bfdcce7e0349"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{totalBaddCappedByCategory}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell height="10">
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="47" height="10" uuid="2412ebc0-2bfc-4b6e-bc56-4b92cf83918a"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="5" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{numberOfBaddCappedBottles}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="47" uuid="8d5ba07f-e9aa-42cd-9dda-3d1d86b431b3">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne8"/>
+							<jr:tableFooter height="14" rowSpan="2">
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="47" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="b0c709ae-e47b-4a3b-bf8e-7b49de87c8ba"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{sum_total_bottles}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="gameCategory">
+								<jr:cell height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="47" height="12" uuid="77b59fb5-6208-4d2a-875d-223505de428c"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6"/>
+										</textElement>
+										<text><![CDATA[T. B]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="47" height="11" uuid="cdab2d21-2c09-4cee-8ed8-c81d8b4c63c5"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{totalOfTotalBottlesByCategory}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell height="10">
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="47" height="10" uuid="5943ff7b-7c4d-4cc2-86fe-e3d4734086cc"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="5" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{total_bottles}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="56" uuid="97b8654e-215f-4dbc-85e7-7c4e85a026a4">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne9"/>
+							<jr:tableFooter height="14" rowSpan="2">
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="56" height="14" forecolor="#FFFFFF" backcolor="rgba(82, 80, 80, 0.45882353)" uuid="0a4306ee-fc11-4a29-91f1-b6dee1fb2884"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{totalMissingBottles}]]></textFieldExpression>
+								</textField>
+							</jr:tableFooter>
+							<jr:groupHeader groupName="gameCategory">
+								<jr:cell height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="56" height="12" uuid="b18f02d4-c13d-4625-9969-8eb9cba9d443"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6"/>
+										</textElement>
+										<text><![CDATA[MANQUANTS]]></text>
+									</staticText>
+								</jr:cell>
+							</jr:groupHeader>
+							<jr:groupFooter groupName="gameCategory">
+								<jr:cell height="11" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="56" height="11" uuid="6e5a6f58-e6d8-4a68-9655-4cb03b3c1bc4"/>
+										<box>
+											<topPen lineWidth="0.25"/>
+											<leftPen lineWidth="0.25"/>
+											<bottomPen lineWidth="0.25"/>
+											<rightPen lineWidth="0.25"/>
+										</box>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="8"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{totalMissingBottlesByCategory}]]></textFieldExpression>
+									</textField>
+								</jr:cell>
+							</jr:groupFooter>
+							<jr:detailCell height="10">
+								<box>
+									<topPen lineWidth="0.2"/>
+									<leftPen lineWidth="0.2"/>
+									<bottomPen lineWidth="0.2"/>
+									<rightPen lineWidth="0.2"/>
+								</box>
+								<textField>
+									<reportElement x="0" y="0" width="56" height="10" uuid="701af024-2731-4d65-827e-da785681097f"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font fontName="Candara" size="5" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$V{missing}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="92">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{isObservation}==true]]></printWhenExpression>
+			<componentElement>
+				<reportElement x="1" y="8" width="554" height="70" uuid="11a6832d-e37d-4c36-8c30-48c8b7d4c50f">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="EMPOBSDS" uuid="8fb308ce-8da4-40fe-a339-e6e950549019">
+						<dataSourceExpression><![CDATA[$P{DATASOURCE2}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="554" uuid="871ae734-e9d9-4961-80c5-b965b1f96558">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [8]"/>
+						<jr:groupHeader groupName="containerObservationGroup">
+							<jr:cell style="Table_CH" height="10" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="554" height="10" backcolor="#FAFAFA" uuid="5bb6b6b6-b6e0-4d4d-9e3c-9b3295567892"/>
+									<box leftPadding="7"/>
+									<textElement textAlignment="Left" verticalAlignment="Middle">
+										<font size="6"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{packaging.container.category}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:columnGroup width="554" uuid="66037c03-454c-4743-8f3e-57783d0ed0ad">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [8]"/>
+							<jr:tableHeader style="Table_TH" height="10" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="554" height="10" backcolor="#F2F2F2" uuid="ba073284-7c96-4386-b476-77f21869d005"/>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="6" isBold="true"/>
+									</textElement>
+									<text><![CDATA[OBSERVATIONS FAITES LORS DE LA DEPALETTISATION DES PLEINS]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:columnGroup width="270" uuid="cf274c49-e6db-47bc-b188-971ffa66780d">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [3]"/>
+								<jr:tableFooter style="Table_TH" height="14" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="270" height="14" forecolor="#FFFFFF" backcolor="#505052" uuid="d5280ede-b174-41ba-a191-41dcd30f1024">
+											<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+										</reportElement>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="7" isBold="true"/>
+										</textElement>
+										<text><![CDATA[TOTAUX]]></text>
+									</staticText>
+								</jr:tableFooter>
+								<jr:groupFooter groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="11" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="270" height="11" uuid="b737fa0e-dda8-404a-a31c-29a9cbfdb625">
+												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+											</reportElement>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font size="8"/>
+											</textElement>
+											<text><![CDATA[TOTAL]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:column width="50" uuid="34ddc606-222e-439a-a286-3090df472e2e">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
+									<jr:tableFooter style="Table_TH" height="0" rowSpan="1"/>
+									<jr:groupHeader groupName="containerObservationGroup">
+										<jr:cell style="Table_CH" height="10" rowSpan="1">
+											<staticText>
+												<reportElement mode="Opaque" x="0" y="0" width="50" height="10" uuid="f7cd08de-1213-426f-93c0-8b6f09993614"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Candara" size="5" isBold="true"/>
+												</textElement>
+												<text><![CDATA[N°]]></text>
+											</staticText>
+										</jr:cell>
+									</jr:groupHeader>
+									<jr:groupFooter groupName="containerObservationGroup">
+										<jr:cell style="Table_CH" height="0" rowSpan="1"/>
+									</jr:groupFooter>
+									<jr:detailCell style="Table_TD" height="12">
+										<textField>
+											<reportElement x="0" y="0" width="50" height="12" uuid="d2312aba-dc81-446d-b075-127b4ae5f0f4"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="5"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="120" uuid="acb4c2de-0271-4077-9f4f-958933e66f37">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
+									<jr:tableFooter style="Table_TH" height="0" rowSpan="1"/>
+									<jr:groupHeader groupName="containerObservationGroup">
+										<jr:cell style="Table_CH" height="10" rowSpan="1">
+											<staticText>
+												<reportElement mode="Opaque" x="0" y="0" width="120" height="10" uuid="54cb415f-c3d0-4ce6-a898-e0f2b9f62d84"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Candara" size="6" isBold="true"/>
+												</textElement>
+												<text><![CDATA[EMBALLAGE]]></text>
+											</staticText>
+										</jr:cell>
+									</jr:groupHeader>
+									<jr:groupFooter groupName="containerObservationGroup">
+										<jr:cell style="Table_CH" height="0" rowSpan="1"/>
+									</jr:groupFooter>
+									<jr:detailCell style="Table_TD" height="12">
+										<textField>
+											<reportElement x="0" y="0" width="120" height="12" uuid="4abae66c-66a2-40d2-9438-e59d809f155b">
+												<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+											</reportElement>
+											<box leftPadding="3"/>
+											<textElement textAlignment="Left" verticalAlignment="Middle">
+												<font fontName="Candara" size="5" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{packaging.container.name} +"  "+$F{packaging.format.denomination}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="100" uuid="b1a3b0ff-8c91-4442-9b8d-0104e7625e4b">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
+									<jr:tableFooter style="Table_TH" height="0" rowSpan="1"/>
+									<jr:groupHeader groupName="containerObservationGroup">
+										<jr:cell style="Table_CH" height="10" rowSpan="1">
+											<staticText>
+												<reportElement mode="Opaque" x="0" y="0" width="100" height="10" uuid="688ceab7-3ccf-4014-ad49-5de786e1a7a1"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Candara" size="6" isBold="true"/>
+												</textElement>
+												<text><![CDATA[CODE]]></text>
+											</staticText>
+										</jr:cell>
+									</jr:groupHeader>
+									<jr:groupFooter groupName="containerObservationGroup">
+										<jr:cell style="Table_CH" height="0" rowSpan="1"/>
+									</jr:groupFooter>
+									<jr:detailCell style="Table_TD" height="12">
+										<textField>
+											<reportElement x="0" y="0" width="100" height="12" uuid="1f9728df-033c-4199-bb41-9b8564da00fe"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="5" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{packaging.code}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+							</jr:columnGroup>
+							<jr:column width="50" uuid="d5c7223e-03ca-47ca-be8d-3a570c7e5fa2">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
+								<jr:tableFooter style="Table_TH" height="14" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="50" height="14" forecolor="#FFFFFF" backcolor="#505052" uuid="2b3b039f-f745-4993-bb25-5a3928b0e08a"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="7" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_lockers_observation}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="10" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="50" height="10" uuid="314280cd-6d4e-418b-a71c-72bd820a4fa8"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6"/>
+											</textElement>
+											<text><![CDATA[CAS / NBRE]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="11" rowSpan="2">
+										<textField>
+											<reportElement mode="Opaque" x="0" y="0" width="50" height="11" uuid="5f8a5f39-0a33-43e2-b70e-b157f6b8692d"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+												<font size="8"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{my_totalLockersObservation}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table_TD" height="12">
+									<textField>
+										<reportElement x="0" y="0" width="50" height="12" uuid="da0ef2a4-d705-4393-93c2-24bfc7eb353d"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{numberOfLockers}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="60" uuid="3655f1a8-2c8f-4fd3-b2ad-44fc71d91cad">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne5"/>
+								<jr:tableFooter style="Table_TH" height="14" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="60" height="14" forecolor="#FFFFFF" backcolor="#505052" uuid="5b863ba0-eed6-4874-aa52-bbefe4eadef2"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="7" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_bottles_observation}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="10" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="60" height="10" uuid="516ebf9a-5657-482b-949c-f2e1a79eeab8"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[BOUTEILLE]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="11" rowSpan="2">
+										<textField>
+											<reportElement mode="Opaque" x="0" y="0" width="60" height="11" uuid="899013d8-d20c-456c-b1ba-2386c1befc44"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font size="8"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{my_totalBottlesObservation}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table_TD" height="12">
+									<textField>
+										<reportElement x="0" y="0" width="60" height="12" uuid="3aa5fd96-e84d-4cbf-830f-cc58dc68df36"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{numberOfBottles}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="60" uuid="8fc406e8-b798-4a58-a493-81f364d7ca82">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne6"/>
+								<jr:tableFooter style="Table_TH" height="14" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="60" height="14" forecolor="#FFFFFF" backcolor="#505052" uuid="92afb857-e4f6-4abb-843b-77c44cf242d6"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="7" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_broken_bottles_observation}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="10" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="60" height="10" uuid="c0249013-4c1e-4a71-bf3b-59e2da7a43cd"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[B. CASSEE(S)]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="11" rowSpan="2">
+										<textField>
+											<reportElement mode="Opaque" x="0" y="0" width="60" height="11" uuid="5de7c1b2-c2dc-4ffd-a262-b208bec63aa3"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font size="8"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{my_totalBrokenBottlesObservation}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table_TD" height="12">
+									<textField>
+										<reportElement x="0" y="0" width="60" height="12" uuid="0be177c5-a503-4395-89f0-573dead815a8"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{numberOfBrokenBottles}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="80" uuid="56c2ee3b-44ab-4fe9-b77e-8ff6d3228aa0">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne7"/>
+								<jr:tableFooter style="Table_TH" height="14" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="80" height="14" forecolor="#FFFFFF" backcolor="#505052" uuid="14e5e34d-319f-4a8d-b5ac-a38a7f268db2"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="7" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_sum_bottles_observation}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="10" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="80" height="10" uuid="e80606ad-b88b-4587-9867-a1bc2fc4caf6"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[T. B]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="11" rowSpan="2">
+										<textField>
+											<reportElement mode="Opaque" x="0" y="0" width="80" height="11" uuid="6835bd08-31f8-435b-a2d1-83c580ddc34d"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font size="8"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{my_sum_total_Observation}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table_TD" height="12">
+									<textField>
+										<reportElement x="0" y="0" width="80" height="12" uuid="b5cdac54-20e5-4c96-9f31-df70f528e302"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_bottles}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="34" uuid="9d39c884-c7e2-4978-b68b-9c5598009cff">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne8"/>
+								<jr:tableFooter style="Table_TH" height="14" rowSpan="2">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="34" height="14" forecolor="#FFFFFF" backcolor="#505052" uuid="f7d8e902-d64a-4815-b0f5-8b96bfe1d0f6"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="7" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_sum_missings}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="10" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="34" height="10" uuid="f5d3d38c-598d-49ec-a0d2-85995c782880"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[M]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="containerObservationGroup">
+									<jr:cell style="Table_CH" height="11" rowSpan="2">
+										<textField>
+											<reportElement mode="Opaque" x="0" y="0" width="34" height="11" uuid="7e2458a5-2b07-400b-aa68-cec277ba75e8"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font size="8"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{my_total_missing_Observation}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table_TD" height="12">
+									<textField>
+										<reportElement x="0" y="0" width="34" height="12" uuid="1a4cd682-feac-479c-a0fb-4c0d7a39a74a"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5" isBold="true"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{missing}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+		<band height="84">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<printWhenExpression><![CDATA[$P{isEmpty}==true]]></printWhenExpression>
+			<componentElement>
+				<reportElement mode="Opaque" x="2" y="6" width="553" height="74" backcolor="#FFFFFF" uuid="d1bc7cae-ec06-4961-8b08-8fd015bfb704">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="EMPTYDS" uuid="daa3c205-3184-435b-9656-8e472f6c7d51">
+						<dataSourceExpression><![CDATA[$P{DATASOURCE3}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:columnGroup width="553" uuid="4a3107ec-9463-456e-80dc-cdbfd6bb5a44">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [8]"/>
+						<jr:groupHeader groupName="Group1">
+							<jr:cell style="Table 1_CH" height="14" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.0"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<textField>
+									<reportElement mode="Opaque" x="0" y="0" width="553" height="14" backcolor="#F7F7F7" uuid="31b9539a-9a6e-4680-b6d5-ac87a1f0a0fc"/>
+									<box leftPadding="10">
+										<topPen lineWidth="0.25"/>
+									</box>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Candara" size="6" isBold="true"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{packaging.container.category}]]></textFieldExpression>
+								</textField>
+							</jr:cell>
+						</jr:groupHeader>
+						<jr:columnGroup width="553" uuid="6a04616d-46e5-4b3e-96a3-d1e1211af642">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [8]"/>
+							<jr:tableHeader style="Table 1_TH" height="12" rowSpan="1">
+								<box>
+									<topPen lineWidth="0.0"/>
+									<leftPen lineWidth="0.0"/>
+									<bottomPen lineWidth="0.75"/>
+									<rightPen lineWidth="0.0"/>
+								</box>
+								<staticText>
+									<reportElement mode="Opaque" x="0" y="0" width="553" height="12" forecolor="#FFFFFF" backcolor="#505052" uuid="9d575255-d49f-4303-a9bc-6684e5073871"/>
+									<box leftPadding="14">
+										<bottomPen lineWidth="0.5"/>
+									</box>
+									<textElement verticalAlignment="Middle">
+										<font fontName="Candara" size="8" isBold="true"/>
+									</textElement>
+									<text><![CDATA[VIDES]]></text>
+								</staticText>
+							</jr:tableHeader>
+							<jr:columnGroup width="200" uuid="5e41daa0-171e-499b-837b-6d8be3b7db7d">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonnes [3]"/>
+								<jr:tableFooter style="Table 1_TH" height="12" rowSpan="1">
+									<staticText>
+										<reportElement mode="Opaque" x="0" y="0" width="200" height="12" forecolor="#FFFFFF" backcolor="#525050" uuid="4b546b55-091e-4a5b-b30f-0148105e5406"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="6" isBold="true"/>
+										</textElement>
+										<text><![CDATA[TOTAUX]]></text>
+									</staticText>
+								</jr:tableFooter>
+								<jr:groupFooter groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+										<staticText>
+											<reportElement style="Table_TH" x="0" y="0" width="200" height="12" uuid="18da242d-743f-4d7d-9872-d4c5038e4b33"/>
+											<box>
+												<bottomPen lineWidth="0.5"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[TOTAL]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:column width="60" uuid="cebfac5f-7a10-4caf-85d8-94e567c35718">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne1"/>
+									<jr:groupHeader groupName="Group1">
+										<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+											<staticText>
+												<reportElement mode="Opaque" x="0" y="0" width="60" height="12" uuid="c033908c-9164-4b24-ac26-3e50e68d146d">
+													<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+												</reportElement>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Candara" size="6" isBold="true"/>
+												</textElement>
+												<text><![CDATA[N°]]></text>
+											</staticText>
+										</jr:cell>
+									</jr:groupHeader>
+									<jr:groupFooter groupName="Group1">
+										<jr:cell style="Table 1_CH" height="0" rowSpan="1"/>
+									</jr:groupFooter>
+									<jr:detailCell style="Table 1_TD" height="10">
+										<textField>
+											<reportElement x="0" y="0" width="60" height="10" uuid="526fa8ab-a4e5-4d96-8289-a6e7d3b81c72"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="5" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="70" uuid="899a9f09-b019-4c76-8f2e-e99b37f97bb9">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne2"/>
+									<jr:groupHeader groupName="Group1">
+										<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+											<staticText>
+												<reportElement mode="Opaque" x="0" y="0" width="70" height="12" uuid="6f7839d0-3f06-45d6-87a7-8767ff101952"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Candara" size="6" isBold="true"/>
+												</textElement>
+												<text><![CDATA[EMBALLAGE]]></text>
+											</staticText>
+										</jr:cell>
+									</jr:groupHeader>
+									<jr:groupFooter groupName="Group1">
+										<jr:cell style="Table 1_CH" height="0" rowSpan="1"/>
+									</jr:groupFooter>
+									<jr:detailCell style="Table 1_TD" height="10">
+										<textField>
+											<reportElement x="0" y="0" width="70" height="10" uuid="badb80ae-5d39-4d5f-a90e-64517c1cf217"/>
+											<box leftPadding="2"/>
+											<textElement textAlignment="Left" verticalAlignment="Middle">
+												<font fontName="Candara" size="5"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{packaging.container.name}+" "+$F{packaging.format.denomination}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+								<jr:column width="70" uuid="3c153dc8-d87e-418f-9eb4-40a26bb24822">
+									<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne3"/>
+									<jr:groupHeader groupName="Group1">
+										<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+											<staticText>
+												<reportElement mode="Opaque" x="0" y="0" width="70" height="12" uuid="77c9e0eb-2028-4c6b-bd14-89c4968fac42"/>
+												<textElement textAlignment="Center" verticalAlignment="Middle">
+													<font fontName="Candara" size="6" isBold="true"/>
+												</textElement>
+												<text><![CDATA[CODE]]></text>
+											</staticText>
+										</jr:cell>
+									</jr:groupHeader>
+									<jr:groupFooter groupName="Group1">
+										<jr:cell style="Table 1_CH" height="0" rowSpan="1"/>
+									</jr:groupFooter>
+									<jr:detailCell style="Table 1_TD" height="10">
+										<textField>
+											<reportElement x="0" y="0" width="70" height="10" uuid="40f788eb-1ca6-41ef-aff9-783497e14821"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="5"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$F{packaging.code}]]></textFieldExpression>
+										</textField>
+									</jr:detailCell>
+								</jr:column>
+							</jr:columnGroup>
+							<jr:column width="69" uuid="c8daf41c-ac66-46a9-9d31-1f369631c54c">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne4"/>
+								<jr:tableFooter style="Table 1_TH" height="12" rowSpan="1">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="69" height="12" forecolor="#FFFFFF" backcolor="#525050" uuid="bc351fac-2bff-4f64-8571-c6679c683a55"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="6"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_empty_lockersNumber}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="69" height="12" uuid="5d09cf80-92f2-48a5-87a8-b85543333a49"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[CASIER(S)]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="2">
+										<textField>
+											<reportElement style="Table_TH" mode="Opaque" x="0" y="0" width="69" height="12" uuid="c4482eb5-95cb-4987-8c03-483692d7cbe9"/>
+											<box>
+												<bottomPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{empty_lockersNumber_by_category}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table 1_TD" height="10">
+									<textField>
+										<reportElement x="0" y="0" width="69" height="10" uuid="558390f6-210f-4243-9a55-f214f7a8b7e7"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{numberOfLockers}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="69" uuid="23033e5e-12e8-40c2-b263-011ce1ffe086">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne5"/>
+								<jr:tableFooter style="Table 1_TH" height="12" rowSpan="1">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="69" height="12" forecolor="#FFFFFF" backcolor="#525050" uuid="5741ab9c-a386-4f58-ab39-58f1927b598a"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="6"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_empty_bottlesNumber}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="69" height="12" uuid="9b1b4879-20be-47cd-933b-d3c3017078b9"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[BOUTEILLE(S)]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="2">
+										<textField>
+											<reportElement style="Table_TH" mode="Opaque" x="0" y="0" width="69" height="12" uuid="9fe0ca95-e468-420a-ad3c-519aa51c1e21"/>
+											<box>
+												<bottomPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{empty_bottlesNumber_by_category}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table 1_TD" height="10">
+									<textField>
+										<reportElement x="0" y="0" width="69" height="10" uuid="6da1d003-275d-4720-a750-381c3baffa44"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{numberOfBottles}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="68" uuid="430163ae-33a0-484a-94f1-d5215016a9c7">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne6"/>
+								<jr:tableFooter style="Table 1_TH" height="12" rowSpan="1">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="68" height="12" forecolor="#FFFFFF" backcolor="#525050" uuid="f614156e-b584-4aec-92a6-9580d06ad213"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="6"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_empty_brokenbottlesNumber}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="68" height="12" uuid="93d67fb3-135a-4d4a-990e-695c385ff64a"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[B. CASSEE(S)]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="2">
+										<textField>
+											<reportElement style="Table_TH" mode="Opaque" x="0" y="0" width="68" height="12" uuid="facdd2c0-9ca8-4136-aeaf-eb3d9596cdf2"/>
+											<box>
+												<bottomPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{empty_brokenbottlesNumber_by_category}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table 1_TD" height="10">
+									<textField>
+										<reportElement x="0" y="0" width="68" height="10" uuid="e644bfa7-c46f-427b-8e2f-91206518a6d7"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$F{numberOfBrokenBottles}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="68" uuid="7440b1c7-cb9c-4f95-b20c-800532f0f15b">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne7"/>
+								<jr:tableFooter style="Table 1_TH" height="12" rowSpan="1">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="68" height="12" forecolor="#FFFFFF" backcolor="#525050" uuid="d9a761c7-c90f-4726-8bee-04da75878d26"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="6"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_empty_total_bottles}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="68" height="12" uuid="14db186d-7bb7-4447-9d70-b74808583e9f"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[T. B]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="2">
+										<textField>
+											<reportElement style="Table_TH" mode="Opaque" x="0" y="0" width="68" height="12" uuid="8227eda9-5779-44d6-b0ad-38598b1be839"/>
+											<box>
+												<bottomPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{empty_sum_totalBottles_by_category}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table 1_TD" height="10">
+									<textField>
+										<reportElement x="0" y="0" width="68" height="10" uuid="918c2152-7225-4d83-91b7-6676af802209"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_bottles}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+							<jr:column width="79" uuid="2ef94a48-3f9e-49c0-8331-0944021f3bd8">
+								<property name="com.jaspersoft.studio.components.table.model.column.name" value="Colonne8"/>
+								<jr:tableFooter style="Table 1_TH" height="12" rowSpan="1">
+									<textField>
+										<reportElement mode="Opaque" x="0" y="0" width="79" height="12" forecolor="#FFFFFF" backcolor="#525050" uuid="ea05099d-a532-4221-8cca-d616c020cfcf"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font size="6"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{total_empty_missings}]]></textFieldExpression>
+									</textField>
+								</jr:tableFooter>
+								<jr:groupHeader groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="1">
+										<staticText>
+											<reportElement mode="Opaque" x="0" y="0" width="79" height="12" uuid="fae4e195-8aa9-4045-aba0-15413e20e5a6"/>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<text><![CDATA[MANQUANTS]]></text>
+										</staticText>
+									</jr:cell>
+								</jr:groupHeader>
+								<jr:groupFooter groupName="Group1">
+									<jr:cell style="Table 1_CH" height="12" rowSpan="2">
+										<textField>
+											<reportElement style="Table_TH" mode="Opaque" x="0" y="0" width="79" height="12" uuid="ac67c187-887e-4a18-affc-ebff66fe2f1e"/>
+											<box>
+												<bottomPen lineWidth="0.25"/>
+											</box>
+											<textElement textAlignment="Center" verticalAlignment="Middle">
+												<font fontName="Candara" size="6" isBold="true"/>
+											</textElement>
+											<textFieldExpression><![CDATA[$V{empty_sum_totalMissing_by_category}]]></textFieldExpression>
+										</textField>
+									</jr:cell>
+								</jr:groupFooter>
+								<jr:detailCell style="Table 1_TD" height="10">
+									<textField>
+										<reportElement x="0" y="0" width="79" height="10" uuid="ba32cac9-2e14-49c2-bc54-f7dd1690bf67"/>
+										<textElement textAlignment="Center" verticalAlignment="Middle">
+											<font fontName="Candara" size="5"/>
+										</textElement>
+										<textFieldExpression><![CDATA[$V{missing}]]></textFieldExpression>
+									</textField>
+								</jr:detailCell>
+							</jr:column>
+						</jr:columnGroup>
+					</jr:columnGroup>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="31">
+			<textField>
+				<reportElement x="210" y="5" width="83" height="21" uuid="878ef25e-b257-44b0-ad08-6ae15c27a160">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Candara" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="293" y="5" width="62" height="21" uuid="d30b4edc-2127-435b-bfe8-4237b4e4d1a5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Candara" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" sur " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="111">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="2" width="120" height="20" backcolor="#FAFAFA" uuid="cf5b4050-0b7e-4a18-bc15-9ad54be4b1f6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<text><![CDATA[CHEF MAGASINIER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="143" y="1" width="110" height="20" backcolor="#FAFAFA" uuid="df8af934-40f9-40f2-bf8c-e5dd5689adaf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<text><![CDATA[CONTROLEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="265" y="1" width="115" height="20" backcolor="#FAFAFA" uuid="8d5b6fdc-b170-409f-9034-9ab34d5fbfe3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<text><![CDATA[TEMOINS-CHAUFFEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="392" y="1" width="74" height="20" backcolor="#FAFAFA" uuid="3fc758be-208d-4809-8a02-8408ca620a2a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<text><![CDATA[CHAUFFEUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="481" y="2" width="73" height="20" backcolor="#FAFAFA" uuid="f2c3ca3a-95dc-4ce1-8fb6-46b97dae803b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box rightPadding="7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<text><![CDATA[CDD]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="57" width="170" height="15" backcolor="#E6E6E6" uuid="9a72d684-6bd4-4626-90f4-1c49954e9950">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<printWhenExpression><![CDATA[$P{agentName_full}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{agentName_full}]]></textFieldExpression>
+			</textField>
+			<textField pattern=" dd MMMMM, yyyy">
+				<reportElement mode="Opaque" x="450" y="90" width="102" height="21" backcolor="#F5F5F5" uuid="912c2acb-09ae-4ad6-9544-9ff1b0743487">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="363" y="90" width="94" height="21" backcolor="#F5F5F5" uuid="c395f230-fd35-4059-98eb-15688b5322fc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Candara" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date d'impression :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="217" y="90" width="83" height="21" uuid="678aff37-376b-4c14-b062-6429459eed06">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Candara" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="300" y="90" width="62" height="21" uuid="e6c7dbb4-1d69-4cea-a84d-8f670900dd2b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Candara" size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" sur " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="210" y="58" width="140" height="15" backcolor="#E6E6E6" uuid="7eba0ee1-1056-4de7-b995-c81a77ec40de">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<printWhenExpression><![CDATA[$P{agentName_empty}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{agentName_empty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="0" y="38" width="170" height="17" backcolor="#D1D1D1" uuid="1aef93eb-1aa1-48b0-ba03-0128cf9c2b94">
+					<printWhenExpression><![CDATA[$P{shift_full}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MAGASINIER (PLEINS) "+$P{shift_full}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="210" y="40" width="140" height="17" backcolor="#D1D1D1" uuid="e756c42c-b6fe-4758-801b-a8a714d36980">
+					<printWhenExpression><![CDATA[$P{shift_empty}!=null]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Candara" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["MAGASINIER (VIDES) "+$P{shift_empty}]]></textFieldExpression>
+			</textField>
+		</band>
+	</lastPageFooter>
+</jasperReport>

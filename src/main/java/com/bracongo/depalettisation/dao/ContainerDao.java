@@ -1,0 +1,33 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package com.bracongo.depalettisation.dao;
+
+import com.bracongo.depalettisation.entities.Container;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.Optional;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
+
+
+/**
+ *
+ * @author f.tshizubu
+ */
+@Repository
+public interface ContainerDao extends JpaRepository<Container, Long>{
+    
+    /**
+     *
+     * @param id
+     * @return
+     */
+    Optional<Container> findContainerByContainerId(int id);
+    int deleteContainerByContainerId(int id);
+    
+    @Query("select c from Container c order by name asc")
+    public List<Container> getContainersOrderByNameAsc();
+     
+}
